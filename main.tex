@@ -41,68 +41,257 @@ Problem Set 2\\
 \section{SN 1.2}
 \textit{Suppose a $2 \times 2$ matrix $X$ (not necessarily Hermitian or unitary) is written as
 $$
-X=a_{0}+\sigma \cdot \mathrm{a}
+X=a_{0}+\vec{\sigma} \cdot \vec{a}
 $$
 where $a_{0}$ and $a_{1,2,3}$ are numbers.}
 \subsection{}
 \textit{How are $a_{0}$ and $a_{k}(k=1,2,3)$ related to $\mathbf{tr}(X)$ and $\mathbf{tr}\left(\sigma_{k} X\right) ?$}
+\begin{align*}
+    X&=a_{0}+\vec{\sigma} \cdot \vec{a}\\
+    &=a_{0}+\left(\begin{array}{ll}
+0 & 1 \\
+1 & 0
+\end{array}\right) a_{1}+\left(\begin{array}{cc}
+0 & -i \\
+i & 0
+\end{array}\right) a_{2}+\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right) a_{3}\\
+\end{align*}
+
+\begin{equation*}
+     \mathbf{Tr}(X)=a_{0} \mathbf{Tr}(1)=2 a_{0}
+\end{equation*}
+
+\begin{equation*}
+    \sigma_{k} X=a_{0} \sigma_{k}+\sigma_{k} \vec{\sigma} \cdot \vec{a}
+\end{equation*}
+
+
+\begin{align*}
+    \mathbf{Tr}\left(\sigma_{k} X\right)&=a_{0} \mathbf{Tr}\left(\sigma_{k}\right)+\sum_{\ell} \mathbf{Tr}\left(\sigma_{k} \sigma_{\ell} a_{\ell}\right)\\
+    &=a_{0} \mathbf{Tr}\left(\sigma_{k}\right)+\frac{1}{2} \sum_{\ell} \mathbf{Tr}\left(\sigma_{k} \sigma_{\ell}+\sigma_{\ell} \sigma_{k}\right) a_{\ell}\\
+    &=\sum_{\ell} \delta_{k \ell} \mathbf{Tr}(1) a_{\ell}\\
+    &= 2 a_{k}
+\end{align*}
+
+
+\begin{equation*}
+    \boxed{\begin{align*}
+            a_{0}&=\frac{1}{2}\mathbf{Tr}(X)\\
+            a_{k}&=\frac{1}{2} \mathbf{Tr}\left(\sigma_{k} X\right)\\
+        \end{align*}}
+\end{equation*}
+
+
 \subsection{}
 \textit{Obtain $a_{0}$ and $a_{k}$ in terms of the matrix elements $X_{i j}$}
+
+
+\begin{align*}
+    a_{0}&=\frac{1}{2}\mathbf{Tr}(X) = \frac{1}{2}(X_{11} + X_{22})\\
+    a_{1}&=\frac{1}{2} \mathbf{Tr}\left(\sigma_{1} X\right) = \frac{1}{2}(X_{12} + X_{21})\\
+    a_{2}&=\frac{1}{2} \mathbf{Tr}\left(\sigma_{2} X\right) = \frac{i}{2}(X_{12} - X_{21})\\
+    a_{3}&=\frac{1}{2} \mathbf{Tr}\left(\sigma_{3} X\right) = \frac{1}{2}(X_{11} - X_{22})\\
+\end{align*}
 
 \newpage
 
 \section{SN 1.8}
-\textit{Using the orthonormality of $|+\rangle$ and $|-\rangle,$ prove
+\textit{Using the orthonormality of $\ket{0}$ and $\ket{1},$ prove
 $$
 \left[S_{i}, S_{j}\right]=i \varepsilon_{i j k} \hbar S_{k}, \quad\left\{S_{i}, S_{j}\right\}=\left(\frac{\hbar^{2}}{2}\right) \delta_{i j}
 $$
 where
 $$
 \begin{array}{l}
-S_{x}=\frac{\hbar}{2}(|+\rangle\langle-|+|-\rangle\langle+|), \quad S_{y}=\frac{i \hbar}{2}(-|+\rangle\langle-|+|-\rangle\langle+|) \\
-S_{z}=\frac{\hbar}{2}(|+\rangle\langle+|-|-\rangle\langle-|)
+S_{x}=\frac{\hbar}{2}(\ketbra{0}{1}+\ketbra{1}{0}), \quad S_{y}=\frac{i \hbar}{2}(-\ketbra{0}{1}+\ketbra{1}{0}) \\
+S_{z}=\frac{\hbar}{2}(\ketbra{0}{0}-\ketbra{1}{1})
 \end{array}
 $$}
+
+\begin{align*}
+    [\hat{S}_x, \hat{S}_y] &= \frac{i \hbar^2 }{4}\left[(\ketbra{0}{1}+\ketbra{1}{0})(-\ketbra{0}{1}+\ketbra{1}{0}) - (-\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{1}+\ketbra{1}{0})\right]\\
+    &= \frac{i \hbar^2 }{4} (-2\ketbra{1}{1} +  2 \ketbra{0}{0} )\\
+    &= \frac{i \hbar^2 }{2} (-\ketbra{1}{1} +   \ketbra{0}{0} )\\
+    &= i \hbar \hat{S}_z 
+\end{align*}
+
+
+\begin{align*}
+    [\hat{S}_y, \hat{S}_z] &= \frac{i \hbar^2 }{4}\left[(-\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{0}-\ketbra{1}{1}) - (\ketbra{0}{0}-\ketbra{1}{1})(-\ketbra{0}{1}+\ketbra{1}{0})\right]\\
+    &= \frac{i \hbar^2 }{4} (2\ketbra{0}{1}+2\ketbra{1}{0}) )\\
+    &= i \hbar \hat{S}_x 
+\end{align*}
+
+\begin{align*}
+    [\hat{S}_z, \hat{S}_x] &= \frac{i \hbar^2 }{4}\left[(\ketbra{0}{0}-\ketbra{1}{1})(\ketbra{0}{1}+\ketbra{1}{0}) - (\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{0}-\ketbra{1}{1})\right]\\
+    &= \frac{i \hbar^2 }{4}(-2\ketbra{0}{1}+2\ketbra{1}{0}))\\
+    &= i \hbar \hat{S}_y 
+\end{align*}
+
+\begin{align*}
+    \{\hat{S}_x, \hat{S}_y\} &= \frac{i \hbar^2 }{4}\left[(\ketbra{0}{1}+\ketbra{1}{0})(-\ketbra{0}{1}+\ketbra{1}{0}) + (-\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{1}+\ketbra{1}{0})\right]\\
+    &= \frac{i \hbar^2 }{4} (2\ketbra{1}{1} +  2 \ketbra{0}{0} )\\
+    &= \frac{i \hbar^2 }{2} (\ketbra{1}{1} +   \ketbra{0}{0} )\\
+    &= 0
+\end{align*}
+
+\begin{align*}
+    \{\hat{S}_x, \hat{S}_x\} &= \frac{ \hbar^2 }{4}\left[(\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{1}+\ketbra{1}{0}) + (\ketbra{0}{1}+\ketbra{1}{0})(\ketbra{0}{1}+\ketbra{1}{0})\right]\\
+    &= \frac{ \hbar^2 }{4} (2\ketbra{1}{1} +  2 \ketbra{0}{0} )\\
+    &= \frac{ \hbar^2 }{2} (\ketbra{1}{1} +   \ketbra{0}{0} )\\
+    &=  \frac{ \hbar^2 }{2} \hat 1
+\end{align*}
+
+
 
 
 \newpage
 
 \section{SN 1.9}
-\textit{Construct $|\mathbf{S} \cdot \hat{\mathbf{n}} ;+\rangle$ such that
+\textit{Construct $\ket{\hat{\mathbf{S}} \cdot \hat{\mathbf{n}} ;+}$ such that
 $$
-\mathbf{S} \cdot \hat{\mathbf{n}}|\mathbf{S} \cdot \hat{\mathbf{n}} ;+\rangle=\left(\frac{\hbar}{2}\right)|\mathbf{S} \cdot \hat{\mathbf{n}} ;+\rangle
+\hat{\mathbf{S}} \cdot \hat{\mathbf{n}}\ket{\hat{\mathbf{S}} \cdot \hat{\mathbf{n}} ;0}=\left(\frac{\hbar}{2}\right)\ket{\hat{\mathbf{S}} \cdot \hat{\mathbf{n}} ;0}
 $$
-where $\hat{\mathbf{n}}$ is characterized by the angles shown in the accompanying figure. Express your answer as a linear combination of $|+\rangle$ and $|-\rangle .[$Note: The answer is
+where $\hat{\mathbf{n}}$ is characterized by the angles shown in the accompanying figure. Express your answer as a linear combination of $\ket{0}$ and $\ket{1} .[$Note: The answer is
 $$
-\cos \left(\frac{\beta}{2}\right)|+\rangle+\sin \left(\frac{\beta}{2}\right) e^{i \alpha}|-\rangle
+\cos \left(\frac{\beta}{2}\right)\ket{0}+\sin \left(\frac{\beta}{2}\right) e^{i \alpha}\ket{1}
 $$
 But do not just verify that this answer satisfies the above eigenvalue equation. Rather, treat the problem as a straightforward eigenvalue problem. Also, do not use rotation operators, which we will introduce later in this book.$]$}
+
+\begin{equation*}
+    \hat{\mathbf{n}}=\cos \alpha \sin \beta \hat{\mathbf{x}} + \sin \alpha \sin \beta \hat{\mathbf{y}}+ \cos \beta \hat{\mathbf{z}}
+\end{equation*}
+
+\begin{align*}
+    \hat{\mathbf{S}} \cdot \hat{\mathbf{n}} &= S_{x} \cos \alpha \sin \beta+S_{y} \sin \alpha \sin \beta+S_{z} \cos \beta\\
+    &=\left(\begin{array}{cc}
+\cos \beta & e^{-i \alpha} \sin \beta \\
+e^{i \alpha} \sin \beta & -\cos \beta
+\end{array}\right)
+\end{align*}
+
+\begin{align*}
+    \hat{\mathbf{S}} \cdot \hat{\mathbf{n}}\left(\begin{array}{l}
+    a \\
+    b
+    \end{array}\right)=\left(\begin{array}{l}
+    a \\
+    b
+    \end{array}\right)\\
+    \left(\begin{array}{cc}
+\cos \beta & e^{-i \alpha} \sin \beta \\
+e^{i \alpha} \sin \beta & -\cos \beta
+\end{array}\right)\left(\begin{array}{l}
+    a \\
+    b
+    \end{array}\right) = \left(\begin{array}{l}
+    a \\
+    b
+    \end{array}\right)\\
+\end{align*}    
+\begin{align*}
+a \cos \beta+b e^{-i \alpha} \sin \beta &=a \\
+a e^{i \alpha} \sin \beta-b \cos \beta &=b
+\end{align*}
+
+\begin{align*}
+    a&=\cos (\beta / 2)\\
+    b&= e^{i \alpha} \sin (\beta / 2) 
+\end{align*}
+
+\begin{equation*}
+\boxed{
+    \ket{\hat{\mathbf{S}} \cdot \hat{\mathbf{n}} ;+} = \cos (\beta / 2) \ket{0} + e^{i \alpha} \sin (\beta / 2) \ket{1}
+    }
+\end{equation*}
 
 
 \newpage
 \section{SN 1.10}
 \textit{The Hamiltonian operator for a two-state system is given by
 $$
-H=a(|1\rangle\langle 1|-| 2\rangle\langle 2|+| 1\rangle\langle 2|+| 2\rangle\langle 1|)
+H=a(\ketbra{1}{1}-\ketbra{2}{2}+\ketbra{1}{2}+\ketbra{2}{1})
 $$
-where $a$ is a number with the dimension of energy. Find the energy eigenvalues and the corresponding energy eigenkets $($as linear combinations of $|1\rangle and |2\rangle$ $)$.}
+where $a$ is a number with the dimension of energy. Find the energy eigenvalues and the corresponding energy eigenkets $($as linear combinations of $\ket{1} and \ket{2}$ $)$.}
+
+
+\begin{align*}
+    \hat{H}&=a\left(\begin{array}{ll}
+        1 & 1 \\
+        1 & -1
+        \end{array}\right)\\
+    &= \left(\begin{array}{ll}
+        a & a \\
+        a & -a
+        \end{array}\right)
+\end{align*}
+
+\begin{align*}
+    \operatorname{det}(\hat{H}-\lambda)&=0\\
+    (a-\lambda)(-a-\lambda)-a^{2}&=0\\
+    \lambda^{2}&=2 a^{2}
+\end{align*}
+
+$$\boxed{\lambda=\pm \sqrt{2} a}$$
+
+\begin{equation*}
+        \hat{H} \ket{\psi}=\left(\begin{array}{ll}
+        a & a \\
+        a & -a
+        \end{array}\right)\left(\begin{array}{l}
+        \psi_1 \\
+        \psi_{2}
+        \end{array}\right)
+\end{equation*}
+
+
+\begin{equation*}
+        \left(\begin{array}{ll}
+        a & a \\
+        a & -a
+        \end{array}\right)\left(\begin{array}{l}
+        \psi_1 \\
+        \psi_{2}
+        \end{array}\right) = \pm \sqrt{2} a \left(\begin{array}{l}
+        \psi_1 \\
+        \psi_{2}
+        \end{array}\right)
+\end{equation*}
+
+
+\begin{equation*}
+    \psi_2 = (\pm \sqrt{2} - 1) \psi_1
+\end{equation*}
+
+\begin{equation*}
+    \boxed{\ket{\pm \sqrt{2} a} = \frac{1}{\sqrt{1+(\pm \sqrt{2}+1)^{2}}}\left(\begin{array}{c}
+1 \\
+\pm \sqrt{2}-1
+\end{array}\right)}
+\end{equation*}
+
+
+
 
 \newpage
 
 \section{SN 1.11}
 \textit{A two-state system is characterized by the Hamiltonian
 $$
-H=H_{11}|1\rangle\left\langle 1\left|+H_{22}\right| 2\right\rangle\langle 2|+H_{12}[|1\rangle\langle 2|+| 2\rangle\langle 1|]
+H=H_{11}\ketbra{1}{1}+H_{22}\ketbra{2}{2}+H_{12}[\ketbra{1}{2}+\ketbra{2}{1}]
 $$
-where $H_{11}, H_{22},$ and $H_{12}$ are real numbers with the dimension of energy, and |1\rangle and |2\rangle are eigenkets of some observable $(\neq H) .$ Find the energy eigenkets and the corresponding energy eigenvalues. Make sure that your answer makes good sense for $H_{12}=0 .$ (You need not solve this problem from scratch. The following fact may be used without proof:
+where $H_{11}, H_{22},$ and $H_{12}$ are real numbers with the dimension of energy, and $\ket{1}$ and $\ket{2}$ are eigenkets of some observable $(\neq H) .$ Find the energy eigenkets and the corresponding energy eigenvalues. Make sure that your answer makes good sense for $H_{12}=0 .$ (You need not solve this problem from scratch. The following fact may be used without proof:
 $$
-(\mathbf{S} \cdot \hat{\mathbf{n}})|\hat{\mathbf{n}} ;+\rangle=\frac{\hbar}{2}|\hat{\mathbf{n}} ;+\rangle
+(\mathbf{S} \cdot \hat{\mathbf{n}})\ket{\hat{\mathbf{n}} ;+}=\frac{\hbar}{2}\ket{\hat{\mathbf{n}} ;+}
 $$
-with $|\hat{n} ;+\rangle$ given by
+with $\ket{\hat{\mathbf{n}} ;+}$ given by
 $$
-|\hat{\mathbf{n}} ;+\rangle=\cos \frac{\beta}{2}|+\rangle+e^{i \alpha} \sin \frac{\beta}{2}|-\rangle
+\ket{\hat{\mathbf{n}} ;+}=\cos \frac{\beta}{2}\ket{+}+e^{i \alpha} \sin \frac{\beta}{2}\ket{-}
 $$
-where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, that characterize $\hat{\mathbf{n}}$. }
+where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, that characterize $\hat{\mathbf{n}}$. The angles are defined in the figure following Problem 1.9.)}
 
 \begin{figure}[h!]
     \centering
@@ -110,12 +299,36 @@ where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, tha
     \label{fig:my_label}
 \end{figure}
 
+
+\begin{align*}
+0&=\left(H_{11}-\lambda\right)\left(H_{22}-\lambda\right)-H_{12}^{2} \\
+&=H_{11} H_{22}-H_{11} \lambda -H_{12}^2-H_{22} \lambda +\lambda ^2\\
+\implies \lambda_\pm &= \frac{1}{2}\left(\pm\sqrt{H_{11}^2-2 H_{11} H_{22}+4 H_{12}^2+H_{22}^2}+H_{11}+H_{22}\right)
+\end{align*}
+
+
+\begin{align*}
+    \hat{H} \ket{\lambda_+} &= \lambda_+ \ket{\lambda_+}\\
+    \hat{H} \left(\begin{array}{l}
+        a \\
+        b
+        \end{array}\right) &= \lambda_+ \left(\begin{array}{l}
+        a \\
+        b
+        \end{array}\right)\\
+%   &= \frac{(\text{h12}-\text{h22}) \left(\sqrt{\text{h11}^2-2 \text{h11} \text{h22}+4 \text{h12}^2+\text{h22}^2}+\text{h11}+\text{h22}\right)}{2 (\text{h12} \text{h21}-\text{h11} \text{h22})}      
+\end{align*}
+
+
+
 \newpage
 
 \section{SN 1.12}
-\textit{A spin $\frac{1}{2}$ system is known to be in an eigenstate of $\mathbf{S} \cdot \hat{\mathbf{n}}$ with eigenvalue $h / 2,$ where nis a unit vector lying in the $x z$ -plane that makes an angle $\gamma$ with the positive $z$ -axis.}
+\textit{A spin $\frac{1}{2}$ system is known to be in an eigenstate of $\hat{\mathbf{S}} \cdot \hat{\mathbf{n}}$ with eigenvalue $h / 2,$ where nis a unit vector lying in the $x z$ -plane that makes an angle $\gamma$ with the positive $z$ -axis.}
 \subsection{}
 \textit{Suppose $S_{x}$ is measured. What is the probability of getting $+\hbar / 2 ?$}
+
+
 
 \subsection{}
 \textit{Evaluate the dispersion in $S_{x}-$ that is,
@@ -124,18 +337,22 @@ $$
 $$
 (For your own peace of mind, check your answers for the special cases $\gamma=0$, $\pi / 2,$ and $\pi .)$}
 
+
+
+
+
 \newpage
 
 
 \section{SN 1.13}
-\textit{A beam of $\operatorname{spin} \frac{1}{2}$ atoms goes through a series of Stern-Gerlach-type measurements as follows:}
+\textit{A beam of $\mathbf{spin} \frac{1}{2}$ atoms goes through a series of Stern-Gerlach-type measurements as follows:}
 
 \subsection{}
 \textit{The first measurement accepts $s_{z}=h / 2$ atoms and rejects $s_{z}=-\hbar / 2$ atoms. }
 
 
 \subsection{}
-\textit{The second measurement accepts $s_{n}=h / 2$ atoms and rejects $s_{n}=-\hbar / 2$ atoms, where $s_{n}$ is the eigenvalue of the operator $\mathbf{S} \cdot \hat{\mathbf{n}},$ with $\hat{\mathbf{n}}$ making an angle $\beta$ in the $x z$ -plane with respect to the $z$ -axis.}
+\textit{The second measurement accepts $s_{n}=h / 2$ atoms and rejects $s_{n}=-\hbar / 2$ atoms, where $s_{n}$ is the eigenvalue of the operator $\hat{\mathbf{S}} \cdot \hat{\mathbf{n}},$ with $\hat{\mathbf{n}}$ making an angle $\beta$ in the $x z$ -plane with respect to the $z$ -axis.}
 
 
 \subsection{}
@@ -167,7 +384,7 @@ with $A \rightarrow S_{x}, B \rightarrow S_{y}$}
 
 \newpage
 \section{SN 1.20}
-\textit{Find the linear combination of $|+\rangle$ and $|-\rangle$ kets that maximizes the uncertainty product
+\textit{Find the linear combination of $\ket{0}$ and $\ket{1}$ kets that maximizes the uncertainty product
 $$
 \left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle
 $$
@@ -177,7 +394,7 @@ Verify explicitly that for the linear combination you found, the uncertainty rel
 \newpage
 
 \section{SN 1.23}
-\textit{Consider a three-dimensional ket space. If a certain set of orthonormal kets-say, $|1\rangle,|2\rangle,$ and $|3\rangle-$ are used as the base kets, the operators $A$ and $B$ are represented by
+\textit{Consider a three-dimensional ket space. If a certain set of orthonormal kets-say, $\ket{1},\ket{2},$ and $|3\rangle-$ are used as the base kets, the operators $A$ and $B$ are represented by
 $$
 A \doteq\left(\begin{array}{ccc}
 a & 0 & 0 \\
