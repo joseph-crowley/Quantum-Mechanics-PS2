@@ -491,13 +491,13 @@ To maximize the uncertainty with respect to $\beta$,
      \sin (\beta ) \cos (\beta ) \left(\sin ^2(2 \alpha ) \sin ^2(\beta )-2\right)&=0\\
      \implies \beta &= 0, \pi\\
 \end{align*}
- The maximal uncertainty product is when $\beta = 0,\pi$, which makes implies the maximal $\left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle$ is for the pure state $\ket{0}$ or $e^{i \alpha}\ket{1}$
+ The maximal uncertainty product is when $\beta = 0,\pi$, which makes implies the maximal $\left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle$ is for the pure state $\ket{0}$ or $e^{i \alpha}\ket{1}$. When $\beta \neq 0,\pi$, the product is maximized when $\alpha = \frac{\pi}{4},\frac{3\pi}{4},\frac{-3\pi}{4},\frac{-\pi}{4}$
 
 
 \newpage
 
 \section{SN 1.23} 
-\textit{Consider a three-dimensional ket space. If a certain set of orthonormal kets-say, $\ket{1},\ket{2},$ and $|3\rangle-$ are used as the base kets, the operators $A$ and $B$ are represented by
+\textit{Consider a three-dimensional ket space. If a certain set of orthonormal kets-say, $\ket{1},\ket{2},$ and $\ket{3}$ - are used as the base kets, the operators $A$ and $B$ are represented by
 $$
 A \doteq\left(\begin{array}{ccc}
 a & 0 & 0 \\
@@ -513,10 +513,63 @@ $$ with $a$ and $b$ both real.}
 \subsection{}
 \textit{Obviously $A$ exhibits a degenerate spectrum. Does $B$ also exhibit a degenerate spectrum?}
 
-Show that $A$ and $B$ commute.
+\begin{align*}
+    \mathrm{det}(B - \lambda) &= 0\\
+    b^2 \lambda -b^3+b \lambda ^2-\lambda ^3&= 0\\
+\end{align*}
+The solutions to the equation $b^2 \lambda -b^3+b \lambda ^2-\lambda ^3= 0$ are $\lambda = -b, b, b$. \newline 
+$\therefore$ B is degenerate. 
 
-Find a new set of orthonormal kets that are simultaneous eigenkets of both $A$ and $B .$ Specify the eigenvalues of $A$ and $B$ for each of the three eigenkets. Does your specification of eigenvalues completely characterize each eigenket?
+\subsection{}
+\textit{Show that $A$ and $B$ commute.}
 
+\begin{align*}
+    AB &= \left(\begin{array}{ccc}
+    a & 0 & 0 \\
+    0 & -a & 0 \\
+    0 & 0 & -a
+    \end{array}\right)\left(\begin{array}{ccc}
+    b & 0 & 0 \\
+    0 & 0 & -i b \\
+    0 & i b & 0
+    \end{array}\right) \\
+    &= \left(\begin{array}{ccc}
+     a b & 0 & 0 \\
+     0 & 0 & i a b \\
+     0 & -i a b & 0 \\
+    \end{array}\right)\\
+    &\\
+    &\\
+    BA &= \left(\begin{array}{ccc}
+    b & 0 & 0 \\
+    0 & 0 & -i b \\
+    0 & i b & 0
+    \end{array}\right)\left(\begin{array}{ccc}
+    a & 0 & 0 \\
+    0 & -a & 0 \\
+    0 & 0 & -a
+    \end{array}\right) \\
+    &= \left(\begin{array}{ccc}
+     a b & 0 & 0 \\
+     0 & 0 & i a b \\
+     0 & -i a b & 0 \\
+    \end{array}\right)\\
+\end{align*}
+
+$$ AB - BA = \left(\begin{array}{ccc}
+     a b & 0 & 0 \\
+     0 & 0 & i a b \\
+     0 & -i a b & 0 \\
+    \end{array}\right) - \left(\begin{array}{ccc}
+     a b & 0 & 0 \\
+     0 & 0 & i a b \\
+     0 & -i a b & 0 \\
+    \end{array}\right)  = 0$$
+
+\subsection{}
+\textit{Find a new set of orthonormal kets that are simultaneous eigenkets of both $A$ and $B .$ Specify the eigenvalues of $A$ and $B$ for each of the three eigenkets. Does your specification of eigenvalues completely characterize each eigenket?}
+
+Starting with the ket $\ket{1}$, with eigenvalue b, the orthonormal eigenkets of $B$ are $\ket{1}, \frac{1}{\sqrt{2}} (i \ket{2} + \ket{3})$, and $\frac{1}{\sqrt{2}} (-i \ket{2} + \ket{3})$. These are simultaneously orthonormal eigenkets of A. 
 
 \newpage
 \section{SN 1.26}
@@ -524,4 +577,20 @@ Find a new set of orthonormal kets that are simultaneous eigenkets of both $A$ a
 $$
 U=\sum_{r}\left|b^{(r)}\right\rangle\left\langle a^{(r)}\right|
 $$}
+
+\begin{align*}
+\ket{0_x} & = \frac{1}{\sqrt{2}}(\ket{0_z} + \ket{1_z})\\
+\ket{1_x} & = \frac{1}{\sqrt{2}}(\ket{0_z} - \ket{1_z})\\
+\end{align*}
+
+$$ U = \frac{1}{\sqrt{2}} \left(\begin{array}{cc}
+1 & 1 \\
+1 & -1
+\end{array}\right)$$
+
+
+$$ U =  \frac{1}{\sqrt{2}}\ketbra{0_x}{0_z} + \frac{1}{\sqrt{2}}\ketbra{1_x}{1_z}$$
+
+This result is consistent with $U=\sum_{r}\left|b^{(r)}\right\rangle\left\langle a^{(r)}\right|$ with $a$ as the $S_z$ basis, and $b$ as the $S_x$ basis.
+
 \end{document}
