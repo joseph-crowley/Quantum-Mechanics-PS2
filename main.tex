@@ -309,18 +309,30 @@ where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, tha
 
 
 \begin{align*}
-    \hat{H} \ket{\lambda_+} &= \lambda_+ \ket{\lambda_+}\\
+    \hat{H} \ket{\lambda_\pm} &= \lambda_\pm \ket{\lambda_\pm}\\
     \hat{H} \left(\begin{array}{l}
         a \\
         b
-        \end{array}\right) &= \lambda_+ \left(\begin{array}{l}
+        \end{array}\right) &= \lambda_\pm \left(\begin{array}{l}
         a \\
         b
         \end{array}\right)\\
-%   &= \frac{(\text{h12}-\text{h22}) \left(\sqrt{\text{h11}^2-2 \text{h11} \text{h22}+4 \text{h12}^2+\text{h22}^2}+\text{h11}+\text{h22}\right)}{2 (\text{h12} \text{h21}-\text{h11} \text{h22})}      
+        \left(\begin{array}{l}
+b H_{12}+a H_{11} \\
+b H_{22}+a H_{12}
+\end{array}\right)&=\left(\begin{array}{c}
+\frac{a}{2}\left(\pm \sqrt{H_{11}^{2}-2 H_{11} H_{22}+4 H_{12}^{2}+H_{22}^{2}}+H_{11}+H_{22}\right) \\
+\frac{b}{2} \left(\pm \sqrt{H_{11}^{2}-2 H_{11} H_{22}+4 H_{12}^{2}+H_{22}^{2}}+H_{11}+H_{22}\right)
+\end{array}\right)\\
+&\\
+b &= \mp \frac{a \sqrt{H_{11}^2-2 H_{11} H_{22}+4 H_{12}^2+H_{22}^2}+a H_{11}-a H_{22}}{2 H_{12}}
 \end{align*}
 
-
+$$\ket{\lambda_\pm} =  \left(\begin{array}{l}
+        1 \\
+        \mp \frac{ \sqrt{H_{11}^2-2 H_{11} H_{22}+4 H_{12}^2+H_{22}^2}+ H_{11}- H_{22}}{2 H_{12}}
+        \end{array}\right)
+$$
 
 \newpage
 
