@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{multirow}
 \usepackage{amsthm}
+\usepackage{float}
 \usepackage{pgfplots}
 
 \pgfplotsset{compat=1.16}
@@ -293,7 +294,7 @@ $$
 $$
 where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, that characterize $\hat{\mathbf{n}}$. The angles are defined in the figure following Problem 1.9.)}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/problem5.png}
     \label{fig:my_label}
@@ -324,43 +325,79 @@ where $\beta$ and $\alpha$ are the polar and azimuthal angles, respectively, tha
 \newpage
 
 \section{SN 1.12}
-\textit{A spin $\frac{1}{2}$ system is known to be in an eigenstate of $\hat{\mathbf{S}} \cdot \hat{\mathbf{n}}$ with eigenvalue $h / 2,$ where nis a unit vector lying in the $x z$ -plane that makes an angle $\gamma$ with the positive $z$ -axis.}
+\textit{A spin $\frac{1}{2}$ system is known to be in an eigenstate of $\hat{\mathbf{S}} \cdot \hat{\mathbf{n}}$ with eigenvalue $\hbar / 2,$ where n is a unit vector lying in the $x z$ -plane that makes an angle $\gamma$ with the positive $z$ -axis.}
 \subsection{}
 \textit{Suppose $S_{x}$ is measured. What is the probability of getting $+\hbar / 2 ?$}
+$$\ket{\psi} = \cos (\frac{\gamma }{2}) \ket{0_z} + \sin (\frac{\gamma }{2}) \ket{1_z}$$
+
+$$ \bra{0_x} =  \frac{1}{\sqrt{2}}(\bra{0_z} + \bra{1_z})$$
 
 
+\begin{align*}
+\left|\braket{0_x}{\psi}\right|^2 &= \frac{1}{\sqrt{2}}(\bra{0_z} + \bra{1_z}) \left( \cos (\frac{\gamma }{2}) \ket{0_z} + \sin (\frac{\gamma }{2}) \ket{1_z}\right)\\
+&= \left(\frac{\sin \left(\frac{\gamma }{2}\right)}{\sqrt{2}}+\frac{\cos \left(\frac{\gamma }{2}\right)}{\sqrt{2}}\right)^2\\
+&= \frac{1}{2}\left(\sqrt{\frac{1-\cos \gamma}{2}}+\sqrt{\frac{1+\cos \gamma}{2}}\right)^{2}\\
+&= \frac{1+\sin \gamma}{2}\\
+\end{align*}
+
+$$\boxed{\left|\braket{0_x}{\psi}\right|^2= \frac{1+\sin \gamma}{2}}$$
 
 \subsection{}
-\textit{Evaluate the dispersion in $S_{x}-$ that is,
+\textit{Evaluate the dispersion in $S_{x}$, that is,
 $$
 \left\langle\left(S_{x}-\left\langle S_{x}\right\rangle\right)^{2}\right\rangle
 $$
 (For your own peace of mind, check your answers for the special cases $\gamma=0$, $\pi / 2,$ and $\pi .)$}
 
+\begin{align*}
+    \left\langle\left(S_{x}-\left\langle S_{x}\right\rangle\right)^{2}\right\rangle &= \left\langle S_{x}^2 +\left\langle S_{x}\right\rangle^2 - 2S_{x}\left\langle S_{x}\right\rangle\right\rangle\\
+    &= \left\langle S_{x}^{2}\right\rangle-\left\langle S_{x}\right\rangle^{2}\\
+    &= \frac{\hbar^2}{4}-\left\langle S_{x}\right\rangle^{2}\\
+\end{align*}
+
+\begin{align*}
+\left\langle S_{x}\right\rangle &=\bra{\psi}  S_x  \ket{\psi} \\
+&=  (\cos (\frac{\gamma }{2}) \bra{0_z} + \sin (\frac{\gamma }{2}) \bra{1_z}) S_x (\cos (\frac{\gamma }{2}) \ket{0_z} + \sin (\frac{\gamma }{2}) \ket{1_z}) \\ 
+&=  (\cos (\frac{\gamma }{2}) \bra{0_z} + \sin (\frac{\gamma }{2})\bra{1_z})\frac{\hbar}{2}[\ketbra{0_z}{1_z}+\ketbra{1_z}{0_z}](\cos (\frac{\gamma }{2}) \ket{0_z} + \sin (\frac{\gamma }{2}) \ket{1_z}) \\
+&= \frac{\hbar}{2}\left[\cos \frac{\gamma}{2}\bra{1_z}+\sin \frac{\gamma}{2}\bra{0_z} \right]\left[\cos \frac{\gamma}{2}\ket{0_z}+\sin \frac{\gamma}{2}\ket{1_z}\right] \\
+&= \frac{\hbar}{2} \sin \gamma
+\end{align*}
+
+\begin{align*}
+    \left\langle\left(S_{x}-\left\langle S_{x}\right\rangle\right)^{2}\right\rangle &= \left\langle S_{x}^2 +\left\langle S_{x}\right\rangle^2 - 2S_{x}\left\langle S_{x}\right\rangle\right\rangle\\
+    &= \frac{\hbar^2}{4}-\left( \frac{\hbar}{2} \sin \gamma \right)^{2}\\
+    &= \frac{\hbar^2}{4} \cos^2 \gamma
+\end{align*}
 
 
-
+\begin{equation*}
+    \boxed{\left\langle\left(S_{x}-\left\langle S_{x}\right\rangle\right)^{2}\right\rangle = \frac{\hbar^2}{4} \cos^2 \gamma}
+\end{equation*}
 
 \newpage
 
 
 \section{SN 1.13}
-\textit{A beam of $\mathbf{spin} \frac{1}{2}$ atoms goes through a series of Stern-Gerlach-type measurements as follows:}
+\textit{A beam of spin $\frac{1}{2}$ atoms goes through a series of Stern-Gerlach-type measurements as follows:}
+\textit{\newline (a) The first measurement accepts $s_{z}=\hbar / 2$ atoms and rejects $s_{z}=-\hbar / 2$ atoms.
+\newline(b) The second measurement accepts $s_{n}=\hbar / 2$ atoms and rejects $s_{n}=-\hbar / 2$ atoms, where $s_{n}$ is the eigenvalue of the operator $\mathbf{S} \cdot \hat{\mathbf{n}},$ with $\hat{\mathbf{n}}$ making an angle $\beta$ in the $x z$ -plane with respect to the $z$ -axis.
+\newline(c) The third measurement accepts $s_{z}=-\hbar / 2$ atoms and rejects $s_{z}=\hbar / 2$ atoms.}
 
-\subsection{}
-\textit{The first measurement accepts $s_{z}=h / 2$ atoms and rejects $s_{z}=-\hbar / 2$ atoms. }
-
-
-\subsection{}
-\textit{The second measurement accepts $s_{n}=h / 2$ atoms and rejects $s_{n}=-\hbar / 2$ atoms, where $s_{n}$ is the eigenvalue of the operator $\hat{\mathbf{S}} \cdot \hat{\mathbf{n}},$ with $\hat{\mathbf{n}}$ making an angle $\beta$ in the $x z$ -plane with respect to the $z$ -axis.}
-
-
-\subsection{}
-\textit{The third measurement accepts $s_{z}=-\hbar / 2$ atoms and rejects $s_{z}=\hbar / 2$ atoms.}
-
-\subsection*{}
 \textit{What is the intensity of the final $s_{z}=-\hbar / 2$ beam when the $s_{z}=\hbar / 2$ beam surviving the first measurement is normalized to unity? How must we orient the second measuring apparatus if we are to maximize the intensity of the final $s_{z}=-\hbar / 2$ beam?}
 
+\begin{align*}
+    \ketbra{\psi} &= (\cos (\frac{\beta }{2}) \ket{0_z} + \sin (\frac{\beta }{2}) \ket{1_z})(\cos (\frac{\beta }{2}) \bra{0_z} + \sin (\frac{\beta }{2}) \bra{1_z})\\
+    &= \cos^2 (\frac{\beta }{2}) \ketbra{0_z} + \sin^2 (\frac{\beta }{2}) \ketbra{1_z}+\cos (\frac{\beta }{2})\sin (\frac{\beta }{2})( \ketbra{0_z}{1_z}+ \ketbra{1_z}{0_z}) \\
+\end{align*}
+\begin{align*}
+P(\beta) &= \left| \braket{0_z}{\psi}\braket{\psi}{1_z}\right|^2 \\
+&= \cos^2 (\frac{\beta }{2})\sin^2 (\frac{\beta }{2})\\ 
+&= \frac{1}{4}\sin^2 \beta
+\end{align*}
+
+$$\boxed{P(\beta) = \frac{1}{4}\sin^2 \beta }$$
+
+This equation implies that the maximal output intensity will be for $\beta = \frac{\pi}{2}$.
 
 \newpage
 
@@ -370,7 +407,7 @@ $$
 \subsection{}
 \textit{Compute
 $$
-\left\langle\left(\Delta S_{x}\right)^{2}\right\rangle \equiv\left\langle S_{2}^{x}\right\rangle-\left\langle S_{x}\right\rangle^{2}
+\left\langle\left(\Delta S_{x}\right)^{2}\right\rangle \equiv\left\langle S_{x}^{2}\right\rangle-\left\langle S_{x}\right\rangle^{2}
 $$
 where the expectation value is taken for the $S_{z}+$ state. Using your result, check the generalized uncertainty relation
 $$
@@ -379,8 +416,38 @@ $$
 with $A \rightarrow S_{x}, B \rightarrow S_{y}$}
 
 
+\begin{align*}
+    \left\langle S_{x}\right\rangle&=\frac{\hbar}{2}\bra{1}(\ketbra{0}{1}+\ketbra{1}{0})\ket{1}\\
+    &= 0\\
+    &\\ 
+    \left\langle S_{y}\right\rangle&=\frac{\hbar}{2}\bra{0}(-\ketbra{0}{1}+\ketbra{1}{0})\ket{0}\\
+    \left\langle S_{z}\right\rangle&=\frac{\hbar}{2}\bra{0}(-\ketbra{0}{1}+\ketbra{1}{0})\ket{0}\\
+    &= 0\\
+    &\\
+    \left\langle S_{x}^{2}\right\rangle &= \frac{\hbar^2}{4}\\
+    \left\langle S_{y}^{2}\right\rangle &= \frac{\hbar^2}{4}\\
+\end{align*}
+
+\begin{align*}
+\left\langle(\Delta  S_{x})^{2}\right\rangle\left\langle(\Delta  S_{y})^{2}\right\rangle &\geq \frac{1}{4}|\langle[ S_{x},  S_{y}]\rangle|^{2}\\
+\frac{\hbar^4}{16} &\geq \frac{\hbar^2}{4} |\langle S_{z}\rangle|^{2}\\
+\frac{\hbar^4}{16} &= \frac{\hbar^4}{16} \\
+\end{align*}
+
+This shows that the uncertainty relation holds. 
+
 \subsection{}
 \textit{Check the uncertainty relation with $A \rightarrow S_{x}, B \rightarrow S_{y}$ for the $S_{x}+$ state.}
+
+\begin{align*}
+\left\langle(\Delta  S_{x})^{2}\right\rangle\left\langle(\Delta  S_{y})^{2}\right\rangle &\geq \frac{1}{4}|\langle[ S_{x},  S_{y}]\rangle|^{2}\\
+0 \left\langle(\Delta  S_{y})^{2}\right\rangle &\geq \frac{\hbar^2}{4} |\langle S_{z}\rangle|^{2}\\
+0 &= 0 \\
+\end{align*}
+
+The uncertainty relation holds. 
+
+
 
 \newpage
 \section{SN 1.20}
@@ -389,11 +456,47 @@ $$
 \left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle
 $$
 Verify explicitly that for the linear combination you found, the uncertainty relation for $S_{x}$ and $S_{y}$ is not violated.}
+$$\ket{\psi} =\cos (\beta / 2) \ket{0} + e^{i \alpha} \sin (\beta / 2) \ket{1}$$
+
+\begin{align*}
+   \left\langle S_{x}\right\rangle &=  \bra{\psi}S_x \ket{\psi}\\
+   &=\frac{\hbar}{2}\left(\cos (\beta / 2) \bra{0} + e^{-i \alpha} \sin (\beta / 2) \bra{1}\right)\left(\ketbra{0}{1}+\ketbra{1}{0}\right) \left(\cos (\beta / 2) \ket{0} + e^{i \alpha} \sin (\beta / 2) \ket{1}\right)\\
+   &= \frac{\hbar}{2} \sin \frac{\beta}{2} \cos \frac{\beta}{2}\left(e^{i \alpha}+e^{-i \alpha}\right) \\
+   &= \frac{\hbar}{2}\cos \alpha \sin \beta\\
+   &\\
+   &\\
+   \left\langle S_{y}\right\rangle &=  \bra{\psi}S_y \ket{\psi}\\
+   &=\frac{i\hbar}{2}\left(\cos (\beta / 2) \bra{0} + e^{-i \alpha} \sin (\beta / 2) \bra{1}\right) (-\ketbra{0}{1}+\ketbra{1}{0}) \left(\cos (\beta / 2) \ket{0} + e^{i \alpha} \sin (\beta / 2) \ket{1}\right)\\
+   &= \frac{i \hbar}{2} \sin \frac{\beta}{2} \cos \frac{\beta}{2}\left(e^{i \alpha}-e^{-i \alpha}\right) \\
+   &= -\frac{\hbar}{2}\sin \alpha \sin \beta\\
+\end{align*}
+\begin{align*}
+   \left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle&= \frac{\hbar^{2}}{4}\left(1-\cos ^{2} \alpha\sin ^{2} \beta \right)\frac{\hbar^{2}}{4}\left(1-\sin ^{2} \alpha \sin ^{2} \beta\right)\\
+   &= \frac{\hbar^{4}}{16}\left(\cos ^{2} \beta+\frac{1}{4} \sin ^{4} \beta \sin ^{2} 2 \alpha\right)\\
+\end{align*}
+
+To maximize uncertainty with respect to $\alpha$, $\sin^2 {2\alpha} = 1$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/problem9.png}
+    \label{fig:my_label}
+\end{figure}
+
+To maximize the uncertainty with respect to $\beta$, 
+\begin{align*}
+    \frac{\partial}{\partial \beta} \left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle &= 0\\
+     \frac{\partial}{\partial \beta} \left(\cos ^{2} \beta+\frac{1}{4} \sin ^{4} \beta \sin ^{2} 2  \alpha\right) &= 0\\
+     \sin ^2(2 \alpha ) \sin ^3(\beta ) \cos (\beta )-2 \sin (\beta ) \cos (\beta ) &= 0\\
+     \sin (\beta ) \cos (\beta ) \left(\sin ^2(2 \alpha ) \sin ^2(\beta )-2\right)&=0\\
+     \implies \beta &= 0, \pi\\
+\end{align*}
+ The maximal uncertainty product is when $\beta = 0,\pi$, which makes implies the maximal $\left\langle\left(\Delta S_{x}\right)^{2}\right\rangle\left\langle\left(\Delta S_{y}\right)^{2}\right\rangle$ is for the pure state $\ket{0}$ or $e^{i \alpha}\ket{1}$
 
 
 \newpage
 
-\section{SN 1.23}
+\section{SN 1.23} 
 \textit{Consider a three-dimensional ket space. If a certain set of orthonormal kets-say, $\ket{1},\ket{2},$ and $|3\rangle-$ are used as the base kets, the operators $A$ and $B$ are represented by
 $$
 A \doteq\left(\begin{array}{ccc}
